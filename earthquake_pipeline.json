@@ -1,0 +1,106 @@
+{
+    "name": "earthquake-pipeline",
+    "objectId": "edda861a-0f5e-44de-a78f-e2f2b9797fa9",
+    "properties": {
+        "activities": [
+            {
+                "name": "stage1",
+                "type": "TridentNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "97a6a876-794d-4b83-8dbf-9dd8f626564d",
+                    "workspaceId": "1a1320cf-b9f0-470c-80f0-c7d81b35cbb9",
+                    "parameters": {
+                        "start_date": {
+                            "value": {
+                                "value": "@formatDateTime(addDays(utcnow(), -1), 'yyyy-MM-dd')",
+                                "type": "Expression"
+                            },
+                            "type": "string"
+                        },
+                        "end_date": {
+                            "value": {
+                                "value": "@formatDateTime(utcnow(), 'yyyy-MM-dd')",
+                                "type": "Expression"
+                            },
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "stage2",
+                "type": "TridentNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "stage1",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "049c0423-ef5d-4ce2-b432-5a2acc4379d9",
+                    "workspaceId": "1a1320cf-b9f0-470c-80f0-c7d81b35cbb9",
+                    "parameters": {
+                        "start_date": {
+                            "value": {
+                                "value": "@activity('stage1').output.start_date",
+                                "type": "Expression"
+                            },
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "stage3",
+                "type": "TridentNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "stage2",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "44557d36-c16e-4122-a1a5-bbc4ce79fe7b",
+                    "workspaceId": "1a1320cf-b9f0-470c-80f0-c7d81b35cbb9",
+                    "parameters": {
+                        "start_date": {
+                            "value": {
+                                "value": "@activity('stage1').output.start_date",
+                                "type": "Expression"
+                            },
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        ],
+        "lastModifiedByObjectId": "c8d3bd1f-672a-4cf7-9cfd-76db96ab49c6",
+        "lastPublishTime": "2025-02-18T21:21:45Z"
+    }
+}
