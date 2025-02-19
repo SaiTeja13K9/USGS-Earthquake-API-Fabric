@@ -1,5 +1,3 @@
-# USGS-Earthquake-API-Fabric
-
 # Earthquake Data Pipeline Using Microsoft Fabric
 
 ## Overview
@@ -19,6 +17,27 @@ The earthquake data pipeline consists of the following stages:
 4. **Power BI Dashboard**: Provides an interactive visualization for trend analysis and insights.
 5. **Data Factory Automation**: Ensures data is updated daily, eliminating manual intervention.
 
+![Pipeline Architecture](https://prod-files-secure.s3.us-west-2.amazonaws.com/ae89901b-79f1-49d4-828c-c80d4912aeac/f1e7f09e-08ab-4756-b1ed-4341bd68bb8a/Data_Engineering_vs_Software_Engineering_(2).png)
+
+## Power BI Visualizations
+
+### **Bubble Map (Point Map)**
+
+![Bubble Map](./screenshots/bubble_map.png)
+
+- This map visualizes individual earthquake occurrences using latitude and longitude.
+- **Bubble size** represents the sum of earthquake significance.
+- **Color coding** differentiates between high, moderate, and low significance earthquakes.
+- This visualization helps in identifying seismic hotspots worldwide.
+
+### **Filled Map (Choropleth Map)**
+
+![Filled Map](./screenshots/filled_map.png)
+
+- This map shades entire countries based on the total earthquake significance.
+- **Darker shades** indicate regions with higher seismic activity.
+- Helps in understanding seismic trends at a **country-wide level** rather than individual events.
+- Useful for policymakers and disaster management teams.
 
 ## Technical Implementation
 
@@ -47,40 +66,7 @@ The earthquake data pipeline consists of the following stages:
 - Runs the pipeline daily, ensuring the latest data is always available.
 - Uses **Microsoft Fabric Data Factory** to schedule and monitor workflows.
 
-## Setup Guide
-
-### **Prerequisites**
-1. **Microsoft Work Account**: Required for Fabric access.
-2. **Microsoft Fabric Account**: Sign up [here](https://app.fabric.microsoft.com/).
-3. **Python & PySpark**: Used for data processing.
-4. **Power BI**: For visualization and reporting.
-
-### **Step 1: Configure Microsoft Fabric**
-- Create a **Fabric Workspace**.
-- Set up a **Lakehouse** as the central data repository.
-
-### **Step 2: Fetch Earthquake Data (Stage 1)**
-- Use a Python script to extract earthquake data from the **USGS API**.
-- Store the data in **Lakehouse Files** as JSON.
-
-### **Step 3: Transform Data (Stage 2)**
-- Convert JSON data to structured Delta tables using **PySpark**.
-- Standardize fields such as **longitude, latitude, magnitude, and timestamps**.
-
-### **Step 4: Enrich Data (Stage 3)**
-- Implement **reverse geocoding** to add country codes.
-- Classify earthquakes based on their significance levels.
-- Save the final dataset as a Delta table for analysis.
-
-### **Step 5: Visualize in Power BI**
-- Load Stage 3 data into **Power BI**.
-- Build an **interactive dashboard** with maps, charts, and filters.
-- Enable daily **auto-refresh** to keep insights up to date.
-
-### **Step 6: Automate with Data Factory**
-- Set up a **Data Factory Pipeline**.
-- Automate fetching, transforming, and enriching data.
-- Schedule the pipeline to run daily, ensuring real-time updates.
+![Pipeline Execution Flow](https://prod-files-secure.s3.us-west-2.amazonaws.com/ae89901b-79f1-49d4-828c-c80d4912aeac/a5c115f2-1865-4bb3-a37d-23c527580442/diagram-export-09-12-2024-21_52_01.png)
 
 ## Summary
 
