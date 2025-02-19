@@ -17,13 +17,13 @@ The earthquake data pipeline consists of the following stages:
 4. **Power BI Dashboard**: Provides an interactive visualization for trend analysis and insights.
 5. **Data Factory Automation**: Ensures data is updated daily, eliminating manual intervention.
 
-![Pipeline Architecture](https://prod-files-secure.s3.us-west-2.amazonaws.com/ae89901b-79f1-49d4-828c-c80d4912aeac/f1e7f09e-08ab-4756-b1ed-4341bd68bb8a/Data_Engineering_vs_Software_Engineering_(2).png)
 
 ## Power BI Visualizations
 
 ### **Bubble Map (Point Map)**
 
-![Bubble Map](./screenshots/bubble_map.png)
+![image](https://github.com/user-attachments/assets/b3b6eb22-52e4-4f3f-a9f0-ebdcc4c96dfe)
+
 
 - This map visualizes individual earthquake occurrences using latitude and longitude.
 - **Bubble size** represents the sum of earthquake significance.
@@ -32,7 +32,8 @@ The earthquake data pipeline consists of the following stages:
 
 ### **Filled Map (Choropleth Map)**
 
-![Filled Map](./screenshots/filled_map.png)
+![image](https://github.com/user-attachments/assets/09dbfc54-b5e2-455b-ba6b-6a9a5103c567)
+
 
 - This map shades entire countries based on the total earthquake significance.
 - **Darker shades** indicate regions with higher seismic activity.
@@ -66,7 +67,8 @@ The earthquake data pipeline consists of the following stages:
 - Runs the pipeline daily, ensuring the latest data is always available.
 - Uses **Microsoft Fabric Data Factory** to schedule and monitor workflows.
 
-![Pipeline Execution Flow](https://prod-files-secure.s3.us-west-2.amazonaws.com/ae89901b-79f1-49d4-828c-c80d4912aeac/a5c115f2-1865-4bb3-a37d-23c527580442/diagram-export-09-12-2024-21_52_01.png)
+![image](https://github.com/user-attachments/assets/ef978755-6a75-4136-832c-5074bc8564c1)
+
 
 ## Summary
 
