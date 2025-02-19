@@ -19,7 +19,6 @@ The earthquake data pipeline consists of the following stages:
 4. **Power BI Dashboard**: Provides an interactive visualization for trend analysis and insights.
 5. **Data Factory Automation**: Ensures data is updated daily, eliminating manual intervention.
 
-![Pipeline Architecture](https://prod-files-secure.s3.us-west-2.amazonaws.com/ae89901b-79f1-49d4-828c-c80d4912aeac/f1e7f09e-08ab-4756-b1ed-4341bd68bb8a/Data_Engineering_vs_Software_Engineering_(2).png)
 
 ## Technical Implementation
 
@@ -47,8 +46,6 @@ The earthquake data pipeline consists of the following stages:
 - Automates data collection, transformation, and enrichment processes.
 - Runs the pipeline daily, ensuring the latest data is always available.
 - Uses **Microsoft Fabric Data Factory** to schedule and monitor workflows.
-
-![Pipeline Execution Flow](https://prod-files-secure.s3.us-west-2.amazonaws.com/ae89901b-79f1-49d4-828c-c80d4912aeac/a5c115f2-1865-4bb3-a37d-23c527580442/diagram-export-09-12-2024-21_52_01.png)
 
 ## Setup Guide
 
